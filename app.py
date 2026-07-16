@@ -31,9 +31,6 @@ docsearch = PineconeVectorStore.from_existing_index(
     embedding=embeddings
 )
 
-
-
-
 retriever = docsearch.as_retriever(search_type="similarity", search_kwargs={"k":3})
 
 chatModel = ChatOpenAI(model="gpt-4o")
@@ -63,8 +60,6 @@ def chat():
     response = rag_chain.invoke({"input": msg})
     print("Response : ", response["answer"])
     return str(response["answer"])
-
-
 
 if __name__ == '__main__':
     app.run(host="0.0.0.0", port= 8080, debug= True)
